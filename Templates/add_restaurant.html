@@ -1,0 +1,15 @@
+{% extends 'template.html' %}
+{% block title %}Add Restaurant{% endblock %}
+
+
+{% block body %}
+<div class="my-3 p-3  rounded box-shadow" style="background-color:#F0F0F0;">
+    <h5 class="border-bottom border-gray pb-2 mb-0">Add restaurant info</h5><br>
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-success">Save</button>
+        </form>
+</div>
+{% endblock %}
+

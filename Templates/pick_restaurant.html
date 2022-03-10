@@ -1,0 +1,26 @@
+{% extends 'template.html' %}
+{% block title %}Found Restaurant{% endblock %}
+
+
+{% block body %}
+<div class="my-3 p-3  rounded box-shadow" style="background-color:#F0F0F0;">
+    <h5 class="border-bottom border-gray pb-2 mb-0">Restaurant selected for You...</h5><br>
+        <b>Restaurant name:</b> {{selected_item.name}}<br>
+        <b>Website:</b>
+        {% if selected_item.url %}
+            <a href="{{selected_item.url}}" style="text-decoration:none">{{selected_item.url}}</a><br>
+        {% else %}
+            No website added<br>
+        {% endif %}
+        <b>Phone number:</b> {{selected_item.phone_number}}<br>
+        <b>Notes:</b>
+        {% if selected_item.notes %}
+            {{selected_item.notes}}<br>
+        {% else %}
+            No notes added...<br>
+        {% endif %}
+    <br>
+    <a href="{% url 'pick_restaurant' %}" class="btn btn-outline-dark">Pick another</a>
+</div>
+{% endblock %}
+

@@ -1,0 +1,37 @@
+{% extends 'template.html' %}
+{% block title %}Restaurant picker{% endblock %}
+
+{% block body %}
+      <div class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow" style="background-color: rgba(0,0,0,0.5) ">
+        <div class="card " style="width: 3rem; height:3rem;background-color:#4C5D8A; color:white;display: flex;justify-content: center;align-items: center; border-radius: 15%; border-color:white">
+                {% if user.is_authenticated %}
+                    <div class="card-body">
+                            <h1>{{user.username|first|title}}</h1>
+                    </div>
+                {% else %}
+                    <div class="card-body">
+                            <h1>...</h1>
+                    </div>
+                {% endif %}
+        </div>
+        <div class="lh-100">
+            {% if user.is_authenticated %}
+                <h6 class="mb-0 text-white lh-100">&nbsp Hi {{ user.username|title }},</h6>
+            {% else %}
+                <h6 class="mb-0 text-white lh-100">&nbsp Hi,</h6>
+            {% endif %}
+          <small>&nbsp Let's find best restaurants today...</small>
+        </div>
+
+      </div>
+      <div style="text-align:center;padding-top:120px">
+          {% if user.is_authenticated %}
+                <a href="{% url 'add_restaurant' %}" type="button" class="btn btn-lg btn-success">Add a restaurant</a>
+                <a href="{% url 'pick_restaurant' %}" type="button" class="btn btn-lg btn-outline-light">Pick a restaurant</a>
+          {% else %}
+                <a href="{% url 'login' %}" type="button" class="btn btn-lg btn-outline-light">Login to explore</a>
+          {% endif %}
+      </div>
+
+{% endblock %}
+

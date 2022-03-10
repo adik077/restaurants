@@ -1,0 +1,32 @@
+{% extends 'template.html' %}
+{% block title %}Restaurants list{% endblock %}
+
+
+{% block body %}
+<div class="my-3 p-3  rounded box-shadow" style="background-color:#F0F0F0;">
+    <h5 class="border-bottom border-gray pb-2 mb-0">Users restaurants</h5><br>
+    <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Restaurant name</th>
+              <th scope="col">Website</th>
+              <th scope="col">Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for item in restaurants %}
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{item.name}}</td>
+              <td>
+                  <a href="{{item.url}}" style="text-decoration:none">{{item.url}}</a>
+              </td>
+              <td>{{item.phone_number}}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+    </table>
+</div>
+{% endblock %}
+
