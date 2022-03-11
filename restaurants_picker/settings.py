@@ -114,10 +114,10 @@ STATIC_URL = '/static/'
 
 if not DEBUG:
     STATIC_ROOT = '/home/restaurantspickerapp/restaurantspickerapp.pythonanywhere.com/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static/'),
-]
+else:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static/'),
+    ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
