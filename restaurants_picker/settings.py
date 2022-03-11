@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -111,13 +112,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 #STATICFILES_DIRS = ['static']
+#STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
-if not DEBUG:
-    STATIC_ROOT = '/home/restaurantspickerapp/restaurantspickerapp.pythonanywhere.com/static/'
+if DEBUG:
+        STATICFILES_DIRS = [
+            os.path.join(BASE_DIR, 'static')
+       ]
 else:
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'static/'),
-    ]
+        STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -132,3 +135,5 @@ LOGOUT_REDIRECT_URL = 'login'
 SESSION_COOKIE_AGE = 604800
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 CART_SESSION_ID = 'restaurants'
+
+django_heroku.settings(locals())
